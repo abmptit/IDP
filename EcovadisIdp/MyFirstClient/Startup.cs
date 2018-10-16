@@ -41,6 +41,24 @@ namespace MyFirstClient
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = "Cookies";
+                    options.DefaultChallengeScheme = "oidc";
+                }).AddCookie("Cookies")
+                .AddOpenIdConnect("oidc", options =>
+                {
+                    options.SignOutScheme = "Cookies";
+                    options.Authority = "https://localhost:44362";
+                    options.ClientId = "MyFirstClient";
+                    options.ResponseType = "code id_token";
+                    //options.CallbackPath = new PathString("...")
+                    options.Scope.Add("openid");
+                    options.Scope.Add("profile");
+                    options.SaveTokens = true;
+                    options.ClientSecret = "secret";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
