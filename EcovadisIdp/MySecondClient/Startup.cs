@@ -42,7 +42,6 @@ namespace MySecondClient
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-
             services.AddAuthentication(options =>
                 {
                     options.DefaultScheme = "Cookies";

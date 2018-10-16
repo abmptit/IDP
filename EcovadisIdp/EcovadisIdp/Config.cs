@@ -87,6 +87,25 @@ namespace EcovadisIdp
                     {
                         new Secret("secret".Sha256())
                     }
+                },
+                new Client()
+                {
+                    ClientName =  "My Third Client",
+                    ClientId =  "MyThirdClient",
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    RedirectUris = new List<string>()
+                    {
+                        "https://localhost:44353/signin-oidc"
+                    },
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
+                    },
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    }
                 }
             };
         }
