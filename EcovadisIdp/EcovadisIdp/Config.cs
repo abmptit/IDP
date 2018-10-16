@@ -22,6 +22,17 @@ namespace EcovadisIdp
                         new Claim("given_name", "Frank"),
                         new Claim("family_name", "Underwood")
                     }
+                },
+                new TestUser
+                {
+                    SubjectId = "a53adfa-11cd-33d6-2566-515261b07c7",
+                    Username = "Fred",
+                    Password = "password",
+                    Claims = new List<Claim>
+                    {
+                        new Claim("given_name", "Fred"),
+                        new Claim("family_name", "Legros")
+                    }
                 }
             };
         }
@@ -50,7 +61,8 @@ namespace EcovadisIdp
                     },
                     AllowedScopes =
                     {
-                        IdentityServerConstants.StandardScopes.OpenId
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
                     },
                     ClientSecrets =
                     {
@@ -68,7 +80,8 @@ namespace EcovadisIdp
                     },
                     AllowedScopes =
                     {
-                        IdentityServerConstants.StandardScopes.OpenId
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
                     },
                     ClientSecrets =
                     {
